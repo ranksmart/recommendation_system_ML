@@ -3,3 +3,4 @@ joblib
 gunicorn
 numpy
 scikit-learn
+pandas
