@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+	Popular Story books
+	</title>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+	</script>
+	
+	<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+	</script>
+	
+	<style>
+		img {
+			max-width: 100%;
+			max-height: 50%;
+			padding-top:10px;
+		}
+		h1 {
+			color: green;
+		}
+        #icon {
+          background-color:white;
+          /* padding: 10px 10px; */
+          font-size: 50px;
+          border-radius: 50px;
+      }
+      .btn:hover {
+          background-color: green;
+      }
+	</style>
+</head>
+
+<body style="background-color:  blanchedalmond;">
+
+    <nav class="navbar bg-dark sticky-top"> 
+        <a href="/"><i  class="fa fa-home" id="icon"></i>
+        </a>
+        <h1 style="color:rgb(18, 163, 174);">
+            Results for {{inp}}
+        </h1>
+            <form class="form-inline my-2 my-lg-0"  action="/Recommendation" method="post">
+                <input name="input" class="form-control mr-sm-2" type="search" placeholder="Find Recommendation Books" aria-label="Search" required>
+                <button class="btn btn-success my-2 my-sm-2" type="submit">Search</button>   
+            </form>   
+    </nav>
+   <br>
+    {%if data|length == 0 %}
+        <div style="color:red;text-align: center;">
+            <h2>Sorry!!There are no such similar books in our list</h2> 
+        </div>
+    {% endif %}
+
+    {%if data|length == 10 %}
+    <div style="color: green; text-align:center;">
+        <h3>Top 10 Similar Recommended Story books: </h3>
+    </div>
+	    <div class="container">
+            <div class="card-group">
+                <!--bootstrap card with 3 horizontal images-->
+                <div class="row">
+                        {% for i in data %}
+                        <div class="col-md-3">
+                            <img class="card-img-top" src={{i[3]}}>
+
+                            <div class="card-body">
+                                <h3 class="card-title ">{{i[0]}} </h3>
+                                <p class="card-text">Author :{{i[1]}} </p>
+                                <p class="card-text">Publication :{{i[2]}} </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                
+
+              
+
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    
+</body>
+</html>					
