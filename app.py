@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 def books(title):
     for b in books_idx:
-        if title in b.lower():
+        if title in b[:10].lower():
             return books_idx.index(b)
 collect=[]
 for b in books_idx:
