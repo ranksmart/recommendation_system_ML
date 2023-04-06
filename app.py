@@ -21,7 +21,7 @@ for b in books_idx:
 
 @app.route('/')
 def home():
-    return render_template('index.html',books=collect[:10])
+    return render_template('index.html',books=collect)
 
 @app.route('/Recommendation',methods=['POST'])
 def books_recommend():
