@@ -39,5 +39,5 @@ def books_recommend():
     return render_template('recommend.html',data=data,inp=title)
  
 if __name__ == '__main__':
-   app.run(debug=True,host='0.0.0.0')
+   app.run(host='0.0.0.0')
 
